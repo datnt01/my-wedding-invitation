@@ -37,54 +37,54 @@ export const NMAP_PLACE_ID = 13321741
 // 예: https://place.map.kakao.com/8634826 -> 8634826
 export const KMAP_PLACE_ID = 8634826
 
-export const BRIDE_FULLNAME = "정지원"
-export const BRIDE_FIRSTNAME = "지원"
-export const BRIDE_TITLE = "장녀"
-export const BRIDE_FATHER = "정상원"
-export const BRIDE_MOTHER = "박윤정"
+export const BRIDE_FULLNAME = "Hương Giang"
+export const BRIDE_FIRSTNAME = "Hương Giang"
+export const BRIDE_TITLE = "Mrs"
+export const BRIDE_FATHER = "Nguyễn Trấn"
+export const BRIDE_MOTHER = "Nguyễn Thị Thoa"
 export const BRIDE_INFO = [
   {
-    relation: "신부",
+    relation: "Cô dâu",
     name: BRIDE_FULLNAME,
-    phone: "010-0000-0000",
-    account: "우리은행 0000000000000",
+    phone: "0949835540",
+    account: "",
   },
   {
-    relation: "신부 아버지",
+    relation: "Bố của cô dâu",
     name: BRIDE_FATHER,
-    phone: "010-0000-0000",
-    account: "하나은행 00000000000",
+    phone: "",
+    account: "",
   },
   {
-    relation: "신부 어머니",
+    relation: "Mẹ của cô dâu",
     name: BRIDE_MOTHER,
-    phone: "010-0000-0000",
-    account: "하나은행 00000000000000",
+    phone: "",
+    account: "",
   },
 ]
 
-export const GROOM_FULLNAME = "남주호"
-export const GROOM_FIRSTNAME = "주호"
-export const GROOM_TITLE = "차남"
-export const GROOM_FATHER = "남현태"
-export const GROOM_MOTHER = "김현영"
+export const GROOM_FULLNAME = "Tiến Đạt"
+export const GROOM_FIRSTNAME = "Tiến Đạt"
+export const GROOM_TITLE = "Mr"
+export const GROOM_FATHER = "Ngô Kim Đức"
+export const GROOM_MOTHER = "Tô Thị Minh Loan"
 export const GROOM_INFO = [
   {
-    relation: "신랑",
+    relation: "Chú rể",
     name: GROOM_FULLNAME,
-    phone: "010-0000-0000",
-    account: "하나은행 00000000000000",
+    phone: "0966134375",
+    account: "",
   },
   {
-    relation: "신랑 아버지",
+    relation: "Bố của chú rể",
     name: GROOM_FATHER,
-    phone: "010-0000-0000",
-    account: "신한은행 000000000000",
+    phone: "",
+    account: "",
   },
   {
-    relation: "신랑 어머니",
+    relation: "Mẹ của chú rể",
     name: GROOM_MOTHER,
-    phone: "010-0000-0000",
-    account: "국민은행 000000000000",
+    phone: "",
+    account: "",
   },
 ]
