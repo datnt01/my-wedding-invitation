@@ -5,22 +5,19 @@ import "dayjs/locale/ko"
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
-dayjs.locale("ko")
+dayjs.locale("vi")
 
 export { dayjs }
 
-export const WEDDING_DATE = dayjs.tz("2024-08-24 13:00", "Asia/Seoul")
-export const WEDDING_DATE_FORMAT = `YYYY년 MMMM D일 dddd A h시${WEDDING_DATE.minute() === 0 ? "" : " m분"}`
+export const WEDDING_DATE = dayjs.tz("2026-03-28 15:00", "Asia/Ho_Chi_Minh")
+export const WEDDING_DATE_FORMAT = `YYYY MMMM D dddd HH:mm`
 
-// 예식 당월 휴무일. 켈린더에 표시하기 위함.
-// 예: 예식일 8월 -> 8월 15일 광복절
-export const HOLIDAYS = [15]
+// ngày được đánh dấu trên lịch.
+export const HOLIDAYS = [28]
 
-export const LOCATION = "서울대학교 연구공원 웨딩홀"
-export const LOCATION_ADDRESS = "서울시 관악구 관악로 1, 연구공원 본관 1층"
+export const LOCATION = "số 4 tổ 2b Phong Châu, Thanh Miếu, Phú Thọ"
+export const LOCATION_ADDRESS = "số 4 tổ 2b Phong Châu, Thanh Miếu, Phú Thọ"
 
-// 카카오톡 공유 시 위치 정보로 사용할 주소.
-// LOCATION 과 동일하게 설정해도 무방하나, 필요에 따라 좀 더 상세히 작성 가능.
 export const SHARE_ADDRESS = LOCATION
 export const SHARE_ADDRESS_TITLE = LOCATION
 
@@ -39,9 +36,6 @@ export const KMAP_PLACE_ID = 8634826
 
 export const BRIDE_FULLNAME = "Hương Giang"
 export const BRIDE_FIRSTNAME = "Hương Giang"
-export const BRIDE_TITLE = "Mrs"
-export const BRIDE_FATHER = "Nguyễn Trấn"
-export const BRIDE_MOTHER = "Nguyễn Thị Thoa"
 export const BRIDE_INFO = [
   {
     relation: "Cô dâu",
@@ -49,25 +43,11 @@ export const BRIDE_INFO = [
     phone: "0949835540",
     account: "",
   },
-  {
-    relation: "Bố của cô dâu",
-    name: BRIDE_FATHER,
-    phone: "",
-    account: "",
-  },
-  {
-    relation: "Mẹ của cô dâu",
-    name: BRIDE_MOTHER,
-    phone: "",
-    account: "",
-  },
+
 ]
 
 export const GROOM_FULLNAME = "Tiến Đạt"
 export const GROOM_FIRSTNAME = "Tiến Đạt"
-export const GROOM_TITLE = "Mr"
-export const GROOM_FATHER = "Ngô Kim Đức"
-export const GROOM_MOTHER = "Tô Thị Minh Loan"
 export const GROOM_INFO = [
   {
     relation: "Chú rể",
@@ -75,16 +55,5 @@ export const GROOM_INFO = [
     phone: "0966134375",
     account: "",
   },
-  {
-    relation: "Bố của chú rể",
-    name: GROOM_FATHER,
-    phone: "",
-    account: "",
-  },
-  {
-    relation: "Mẹ của chú rể",
-    name: GROOM_MOTHER,
-    phone: "",
-    account: "",
-  },
+
 ]

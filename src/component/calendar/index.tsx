@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react"
 import {
-  BRIDE_FIRSTNAME,
-  GROOM_FIRSTNAME,
+
   HOLIDAYS,
   WEDDING_DATE,
   WEDDING_DATE_FORMAT,
@@ -13,11 +12,6 @@ const daysInMonth = WEDDING_DATE.daysInMonth()
 
 export const Calendar = () => {
   const [tsDiff, setTsDiff] = useState(WEDDING_DATE.diff())
-
-  const dayDiff = useMemo(() => {
-    const dayOffset = WEDDING_DATE.diff(WEDDING_DATE.startOf("day"))
-    return Math.ceil((tsDiff - dayOffset) / 1000 / 60 / 60 / 24)
-  }, [tsDiff])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -115,20 +109,7 @@ export const Calendar = () => {
           <span>:</span>
           <div className="count">{diffs.seconds}</div>
         </div>
-        <div className="message">
-          {GROOM_FIRSTNAME} & {BRIDE_FIRSTNAME}의 결혼식이{" "}
-          {dayDiff > 0 ? (
-            <>
-              <span className="d-day">{dayDiff}</span>일 남았습니다.
-            </>
-          ) : dayDiff === 0 ? (
-            <>오늘입니다.</>
-          ) : (
-            <>
-              <span className="d-day">{-dayDiff}</span>일 지났습니다.
-            </>
-          )}
-        </div>
+       
       </div>
     </LazyDiv>
   )

@@ -362,7 +362,7 @@ export const Gallery = () => {
           openModal({
             className: "all-photo-modal",
             closeOnClickBackground: true,
-            header: <div className="title">사진 전체보기</div>,
+            header: <div className="title">Toàn bộ ảnh cưới</div>,
             content: (
               <>
                 <div className="photo-list">
@@ -392,13 +392,13 @@ export const Gallery = () => {
                 className="bg-light-grey-color text-dark-color"
                 onClick={closeModal}
               >
-                닫기
+                Đóng
               </Button>
             ),
           })
         }
       >
-        사진 전체보기
+        Xem tất cả ảnh
       </Button>
     </LazyDiv>
   )

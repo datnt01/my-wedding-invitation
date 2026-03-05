@@ -2,14 +2,8 @@ import { Fragment } from "react/jsx-runtime"
 import {
   BRIDE_FULLNAME,
   BRIDE_INFO,
-  BRIDE_FATHER,
-  BRIDE_MOTHER,
   GROOM_FULLNAME,
   GROOM_INFO,
-  GROOM_FATHER,
-  GROOM_MOTHER,
-  GROOM_TITLE,
-  BRIDE_TITLE,
 } from "../../const"
 import { useModal } from "../modal"
 import { Button } from "../button"
@@ -33,17 +27,9 @@ export const Invitation = () => {
       <div className="break" />
 
       <div className="name">
-        {GROOM_FATHER} · {GROOM_MOTHER}
-        <span className="relation">
-          의 <span className="relation-name">{GROOM_TITLE}</span>
-        </span>{" "}
         {GROOM_FULLNAME}
       </div>
       <div className="name">
-        {BRIDE_FATHER} · {BRIDE_MOTHER}
-        <span className="relation">
-          의 <span className="relation-name">{BRIDE_TITLE}</span>
-        </span>{" "}
         {BRIDE_FULLNAME}
       </div>
 
@@ -56,9 +42,9 @@ export const Invitation = () => {
             closeOnClickBackground: true,
             header: (
               <div className="title-group">
-                <div className="title">축하 인사 전하기</div>
+                <div className="title">Gửi lời chúc mừng</div>
                 <div className="subtitle">
-                  전화, 문자메세지로 축하 인사를 전해보세요.
+                  Hãy gửi lời chúc mừng của bạn qua điện thoại hoặc tin nhắn.
                 </div>
               </div>
             ),
@@ -120,13 +106,13 @@ export const Invitation = () => {
                 className="bg-light-grey-color text-dark-color"
                 onClick={closeModal}
               >
-                닫기
+                Đóng
               </Button>
             ),
           })
         }}
       >
-        연락하기
+        Liên hệ với chúng tôi
       </Button>
     </LazyDiv>
   )

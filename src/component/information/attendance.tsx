@@ -39,22 +39,19 @@ export const AttendanceInfo = () => {
 
     openModal({
       className: "attendance-info-modal",
-      header: <div className="title">참석 의사 전달 안내</div>,
+      header: <div className="title">Xác nhận tham dự</div>,
       content: (
         <>
           <div className="info-message">
-            축하의 마음으로 참석해주시는
+            Xin vui lòng xác nhận trước với chúng mình để chúng mình có thể sắp
+            xếp chỗ ngồi được chu đáo hơn.
             <br />
-            모든 분들을 귀하게 모실 수 있도록
-            <br />
-            참석 및 식사 여부를 미리 여쭙고자 합니다.
-            <div className="break" />
-            부담없이 알려주시면
-            <br />
-            정성껏 준비하겠습니다.
+            Ngày vui chủ yếu là ăn uống vui vẻ, hôm đó có thể bận rộn không kịp
+            chăm sóc chu đáo hết mọi người, mong được thông cảm. Hẹn gặp bạn tại
+            đám cưới nhé~
           </div>
           <div className="wedding-info">
-            <HeartIcon /> 신랑 {GROOM_FULLNAME} & 신부 {BRIDE_FULLNAME}
+            <HeartIcon /> {GROOM_FULLNAME} & {BRIDE_FULLNAME}
             <br />
             <CalendarIcon /> {WEDDING_DATE.format(WEDDING_DATE_FORMAT)}
             <br />
@@ -71,14 +68,14 @@ export const AttendanceInfo = () => {
               openModal(attendanceModalInfo)
             }}
           >
-            참석 의사 전달하기
+            Xác nhận tham dự
           </Button>
           <Button
             buttonStyle="style2"
             className="bg-light-grey-color text-dark-color"
             onClick={closeModal}
           >
-            닫기
+            Đóng
           </Button>
         </>
       ),
@@ -89,14 +86,12 @@ export const AttendanceInfo = () => {
 
   return (
     <div className="info-card">
-      <div className="label">참석 의사 전달</div>
+      <div className="label">Xác nhận tham dự</div>
       <div className="content">
-        신랑, 신부에게 참석의사를
-        <br />
-        미리 전달할 수 있어요.
+      <div className="break" />
+        Hãy thông báo cho cô dâu và chú rể về ý định tham dự của bạn.
       </div>
 
-      <div className="break" />
 
       <Button
         style={{ width: "100%" }}
@@ -104,7 +99,7 @@ export const AttendanceInfo = () => {
           openModal(attendanceModalInfo)
         }}
       >
-        참석 의사 전달하기
+        Xác nhận tham dự
       </Button>
     </div>
   )
@@ -151,30 +146,32 @@ const AttendanceModalContent = () => {
           const count = Number(inputRef.current.count.value)
 
           if (!side) {
-            alert("신랑 또는 신부를 선택해주세요.")
+            alert("Vui lòng chọn bên phía cô dâu hoặc chú rể.")
             return
           }
 
           if (!name) {
-            alert("성함을 입력해주세요.")
+            alert("Vui lòng nhập tên của bạn.")
             return
           }
           if (name.length > RULES.name.maxLength) {
-            alert(`성함을 ${RULES.name.maxLength}자 이하로 입력해주세요.`)
+            alert(`tên của bạn phải ngắn hơn ${RULES.name.maxLength} ký tự.`)
             return
           }
 
           if (!meal) {
-            alert("식사 여부를 선택해주세요.")
+            alert("Vui lòng xác nhận tham dự.")
             return
           }
 
           if (isNaN(count)) {
-            alert("참석 인원을 입력해주세요.")
+            alert("Số lượng người tham dự phải là một số.")
             return
           }
           if (count < RULES.count.min) {
-            alert(`참석 인원을 ${RULES.count.min}명 이상으로 입력해주세요.`)
+            alert(
+              `Số lượng người tham dự phải từ ${RULES.count.min} người trở lên.`,
+            )
             return
           }
 
@@ -189,17 +186,17 @@ const AttendanceModalContent = () => {
             throw new Error(res.statusText)
           }
 
-          alert("참석 의사가 성공적으로 전달되었습니다.")
+          alert("Đã gửi xác nhận tham dự.")
           closeModal()
         } catch {
-          alert("참석 의사 전달에 실패했습니다.")
+          alert("Gửi không thành công.")
         } finally {
           setLoading(false)
         }
       }}
     >
       <div className="input-group">
-        <div className="label">구분</div>
+        <div className="label">Bạn tham dự bên phía cô dâu hay chú rể ?</div>
         <div className="select-input">
           <label>
             <input
@@ -213,7 +210,7 @@ const AttendanceModalContent = () => {
                 inputRef.current.side.groom = ref as HTMLInputElement
               }}
             />
-            <span>신랑</span>
+            <span>Chú rể</span>
           </label>
 
           <label>
@@ -227,18 +224,18 @@ const AttendanceModalContent = () => {
                 inputRef.current.side.bride = ref as HTMLInputElement
               }}
             />
-            <span>신부</span>
+            <span>Cô dâu</span>
           </label>
         </div>
       </div>
 
       <div className="input-group">
-        <div className="label">성함</div>
+        <div className="label">Tên</div>
         <div className="input">
           <input
             disabled={loading}
             type="text"
-            placeholder="참석자 성함을 입력해주세요."
+            placeholder="tên của bạn là gì?"
             maxLength={RULES.name.maxLength}
             ref={(ref) => {
               inputRef.current.name = ref as HTMLInputElement
@@ -248,7 +245,7 @@ const AttendanceModalContent = () => {
       </div>
 
       <div className="input-group">
-        <div className="label">식사</div>
+        <div className="label">Xác nhận tham dự</div>
         <div className="radio-input">
           <label>
             <input
@@ -260,7 +257,7 @@ const AttendanceModalContent = () => {
                 inputRef.current.meal.yes = ref as HTMLInputElement
               }}
             />
-            <span>예정</span>
+            <span>Có, tôi sẽ tham dự</span>
           </label>
 
           <label>
@@ -273,7 +270,7 @@ const AttendanceModalContent = () => {
                 inputRef.current.meal.undecided = ref as HTMLInputElement
               }}
             />
-            <span>미정</span>
+            <span>Tôi chưa chắc có thể tham dự được</span>
           </label>
 
           <label>
@@ -286,13 +283,13 @@ const AttendanceModalContent = () => {
                 inputRef.current.meal.no = ref as HTMLInputElement
               }}
             />
-            <span>불참</span>
+            <span>Tôi bận, rất tiếc không thể tham dự</span>
           </label>
         </div>
       </div>
 
       <div className="input-group">
-        <div className="label">참석 인원 (본인 포함)</div>
+        <div className="label">Số lượng người tham dự</div>
         <div>
           <input
             disabled={loading}
@@ -303,7 +300,6 @@ const AttendanceModalContent = () => {
               inputRef.current.count = ref as HTMLInputElement
             }}
           />
-          명
         </div>
       </div>
     </form>
@@ -314,14 +310,14 @@ const AttendanceModalFooter = () => {
   return (
     <>
       <Button buttonStyle="style2" type="submit" form="attendance-form">
-        전달하기
+        Xác nhận tham dự
       </Button>
       <Button
         buttonStyle="style2"
         className="bg-light-grey-color text-dark-color"
         onClick={closeModal}
       >
-        닫기
+        Đóng
       </Button>
     </>
   )
@@ -329,7 +325,7 @@ const AttendanceModalFooter = () => {
 
 const attendanceModalInfo = {
   className: "attendance-modal",
-  header: <div className="title">참석 의사 전달하기</div>,
+  header: <div className="title">Xác nhận tham dự</div>,
   content: <AttendanceModalContent />,
   footer: <AttendanceModalFooter />,
 }
