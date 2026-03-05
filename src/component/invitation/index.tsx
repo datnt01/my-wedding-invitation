@@ -10,6 +10,8 @@ import { Button } from "../button"
 import { LazyDiv } from "../lazyDiv"
 import PhoneIcon from "../../icons/phone-flip-icon.svg?react"
 import EnvelopeIcon from "../../icons/envelope-icon.svg?react"
+import groomImage from '../../images/groom.png';
+import brideImage from '../../images/bride.png';
 
 export const Invitation = () => {
   const { openModal, closeModal } = useModal()
@@ -23,14 +25,21 @@ export const Invitation = () => {
       <div className="content">Chúng mình trân trọng kính mời bạn đến dự lễ cưới.</div>
       <div className="content">Cùng chứng kiến lời thề nguyện và sẻ chia khoảng khắc hạnh phúc.</div>
       <div className="content">Sự hiện diện của bạn sẽ làm ngày đặc biệt này thêm rạng ngời</div>
-   
-      <div className="break" />
 
-      <div className="name">
-        {GROOM_FULLNAME}
-      </div>
-      <div className="name">
-        {BRIDE_FULLNAME}
+      <div className="break" />
+      <div className="infor-container">
+        <div className="groom-info">
+          <img src={groomImage} alt="groom-image" />
+          <div className="name">
+            {GROOM_FULLNAME}
+          </div>
+        </div>
+        <div className="bride-info">
+          <img src={brideImage} alt="bride-info" />
+          <div className="name">
+            {BRIDE_FULLNAME}
+          </div>
+        </div>
       </div>
 
       <div className="break" />

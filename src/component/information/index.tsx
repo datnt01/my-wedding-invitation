@@ -43,7 +43,6 @@ export const Information = () => {
           <Information1 />
         </LazyDiv>
         <LazyDiv className="card information">
-          <Information2 />
         </LazyDiv>
       </>
     )
@@ -52,7 +51,6 @@ export const Information = () => {
   return (
     <LazyDiv className="card information">
       <Information1 />
-      <Information2 />
       <AttendanceInfo />
     </LazyDiv>
   )

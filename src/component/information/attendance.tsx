@@ -1,17 +1,10 @@
 import {
-  BRIDE_FULLNAME,
   dayjs,
-  GROOM_FULLNAME,
-  LOCATION,
   WEDDING_DATE,
-  WEDDING_DATE_FORMAT,
 } from "../../const"
 import { Button } from "../button"
 import { useModal } from "../modal"
-import { useEffect, useRef, useState } from "react"
-import HeartIcon from "../../icons/heart-icon.svg?react"
-import CalendarIcon from "../../icons/calendar-icon.svg?react"
-import MarkerIcon from "../../icons/marker-icon.svg?react"
+import { useRef, useState } from "react"
 import { SERVER_URL } from "../../env"
 
 const RULES = {
@@ -26,61 +19,7 @@ const RULES = {
 
 export const AttendanceInfo = () => {
   const { openModal, closeModal } = useModal()
-
-  const initialized = useRef(false)
-
   const now = useRef(dayjs())
-
-  useEffect(() => {
-    if (initialized.current) return
-    initialized.current = true
-
-    if (!SERVER_URL || WEDDING_DATE.isBefore(now.current)) return
-
-    openModal({
-      className: "attendance-info-modal",
-      header: <div className="title">Xác nhận tham dự</div>,
-      content: (
-        <>
-          <div className="info-message">
-            Xin vui lòng xác nhận trước với chúng mình để chúng mình có thể sắp
-            xếp chỗ ngồi được chu đáo hơn.
-            <br />
-            Ngày vui chủ yếu là ăn uống vui vẻ, hôm đó có thể bận rộn không kịp
-            chăm sóc chu đáo hết mọi người, mong được thông cảm. Hẹn gặp bạn tại
-            đám cưới nhé~
-          </div>
-          <div className="wedding-info">
-            <HeartIcon /> {GROOM_FULLNAME} & {BRIDE_FULLNAME}
-            <br />
-            <CalendarIcon /> {WEDDING_DATE.format(WEDDING_DATE_FORMAT)}
-            <br />
-            <MarkerIcon /> {LOCATION}
-          </div>
-        </>
-      ),
-      footer: (
-        <>
-          <Button
-            buttonStyle="style2"
-            onClick={() => {
-              closeModal()
-              openModal(attendanceModalInfo)
-            }}
-          >
-            Xác nhận tham dự
-          </Button>
-          <Button
-            buttonStyle="style2"
-            className="bg-light-grey-color text-dark-color"
-            onClick={closeModal}
-          >
-            Đóng
-          </Button>
-        </>
-      ),
-    })
-  }, [openModal, closeModal])
 
   if (!SERVER_URL || WEDDING_DATE.isBefore(now.current)) return null
 
@@ -259,20 +198,6 @@ const AttendanceModalContent = () => {
             />
             <span>Có, tôi sẽ tham dự</span>
           </label>
-
-          <label>
-            <input
-              disabled={loading}
-              type="radio"
-              name="meal"
-              value="undecided"
-              ref={(ref) => {
-                inputRef.current.meal.undecided = ref as HTMLInputElement
-              }}
-            />
-            <span>Tôi chưa chắc có thể tham dự được</span>
-          </label>
-
           <label>
             <input
               disabled={loading}
@@ -285,21 +210,6 @@ const AttendanceModalContent = () => {
             />
             <span>Tôi bận, rất tiếc không thể tham dự</span>
           </label>
-        </div>
-      </div>
-
-      <div className="input-group">
-        <div className="label">Số lượng người tham dự</div>
-        <div>
-          <input
-            disabled={loading}
-            type="number"
-            min={RULES.count.min}
-            defaultValue={RULES.count.default}
-            ref={(ref) => {
-              inputRef.current.count = ref as HTMLInputElement
-            }}
-          />
         </div>
       </div>
     </form>
