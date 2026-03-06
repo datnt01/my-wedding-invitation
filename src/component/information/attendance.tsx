@@ -1,7 +1,4 @@
-import {
-  dayjs,
-  WEDDING_DATE,
-} from "../../const"
+import { dayjs, WEDDING_DATE } from "../../const"
 import { Button } from "../button"
 import { useModal } from "../modal"
 import { useRef, useState } from "react"
@@ -18,7 +15,7 @@ const RULES = {
 }
 
 export const AttendanceInfo = () => {
-  const { openModal, closeModal } = useModal()
+  const { openModal } = useModal()
   const now = useRef(dayjs())
 
   if (!SERVER_URL || WEDDING_DATE.isBefore(now.current)) return null
@@ -27,10 +24,9 @@ export const AttendanceInfo = () => {
     <div className="info-card">
       <div className="label">Xác nhận tham dự</div>
       <div className="content">
-      <div className="break" />
+        <div className="break" />
         Hãy thông báo cho cô dâu và chú rể về ý định tham dự của bạn.
       </div>
-
 
       <Button
         style={{ width: "100%" }}
@@ -77,11 +73,9 @@ const AttendanceModalContent = () => {
           const name = inputRef.current.name.value
           const meal = inputRef.current.meal.yes.checked
             ? "yes"
-            : inputRef.current.meal.undecided.checked
-              ? "undecided"
-              : inputRef.current.meal.no.checked
-                ? "no"
-                : null
+            : inputRef.current.meal.no.checked
+              ? "no"
+              : null
           const count = Number(inputRef.current.count.value)
 
           if (!side) {

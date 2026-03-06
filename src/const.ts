@@ -1,7 +1,7 @@
 import dayjs from "dayjs"
 import utc from "dayjs/plugin/utc"
 import timezone from "dayjs/plugin/timezone"
-import "dayjs/locale/ko"
+import "dayjs/locale/vi"
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -21,16 +21,14 @@ export const LOCATION_ADDRESS = "số 4 tổ 2b Phong Châu, Thanh Miếu, Phú 
 export const SHARE_ADDRESS = LOCATION
 export const SHARE_ADDRESS_TITLE = LOCATION
 
-// 네이버 지도 및 카카오 네비게이션에 사용할 좌표. [경도, 위도] 형식.
+
 export const WEDDING_HALL_POSITION = [126.9594982, 37.4657134]
 
-// 네이버 지도의 웨딩홀 장소 ID
-// 네이버 지도 웹페이지에서 웨딩홀 검색 후 URL에서 확인 가능.
+
 // 예: https://map.naver.com/p/entry/place/13321741 -> 13321741
 export const NMAP_PLACE_ID = 13321741
 
-// 카카오 지도의 웨딩홀 장소 ID
-// 카카오 지도 웹페이지에서 웨딩홀 검색 후 해당 장소에서 상세보기 클릭 시 URL에서 확인 가능.
+
 // 예: https://place.map.kakao.com/8634826 -> 8634826
 export const KMAP_PLACE_ID = 8634826
 
@@ -41,7 +39,8 @@ export const BRIDE_INFO = [
     relation: "Cô dâu",
     name: BRIDE_FULLNAME,
     phone: "0949835540",
-    account: "",
+    bankAccount: "0949835540",
+    bankName:"Techcombank",
   },
 
 ]
@@ -53,7 +52,9 @@ export const GROOM_INFO = [
     relation: "Chú rể",
     name: GROOM_FULLNAME,
     phone: "0966134375",
-    account: "",
+    bankAccount: "00126297001",
+    bankName:"Tpbank",
+
   },
 
 ]

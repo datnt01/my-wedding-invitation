@@ -2,17 +2,17 @@
 
 import { useContext, useEffect } from "react"
 import { StoreContext } from "./context"
-import { KAKAO_SDK_JS_KEY, NAVER_MAP_CLIENT_ID } from "../../env"
+import { KAKAO_SDK_JS_KEY, MAP_API_KEY } from "../../env"
 
 const baseUrl = import.meta.env.BASE_URL
 
-const NAVER_MAP_URL = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NAVER_MAP_CLIENT_ID}`
+const NAVER_MAP_URL = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${MAP_API_KEY}`
 const KAKAO_SDK_URL = `${baseUrl}/kakao_js_sdk/2.7.1/kakao.min.js`
 
 export const useNaver = () => {
   const { naver, setNaver } = useContext(StoreContext)
   useEffect(() => {
-    if (!NAVER_MAP_CLIENT_ID) {
+    if (!MAP_API_KEY) {
       return
     }
 

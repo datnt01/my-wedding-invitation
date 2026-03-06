@@ -1,3 +1,4 @@
+import { LOCATION, WEDDING_DATE } from "../../const"
 import { STATIC_ONLY } from "../../env"
 import { LazyDiv } from "../lazyDiv"
 import { AttendanceInfo } from "./attendance"
@@ -9,27 +10,10 @@ export const Information1 = () => {
       <div className="info-card">
         <div className="label">Tiệc cưới</div>
         <div className="content">
-          Giờ đón khách: 14:30 - 17:00
+          Giờ đón khách: {WEDDING_DATE.format("HH:mm giờ")}
           <br />
-          Địa điểm: số nhà 4, tổ 2b phố Phong Châu, Thanh Miếu, Phú Thọ
+          Địa điểm: {LOCATION}
         </div>
-      </div>
-    </>
-  )
-}
-
-export const Information2 = () => {
-  return (
-    <>
-      <div className="info-card">
-        <div className="label">Quà mừng</div>
-        <div className="content">
-          
-        </div>
-
-        <div className="break" />
-
-        
       </div>
     </>
   )

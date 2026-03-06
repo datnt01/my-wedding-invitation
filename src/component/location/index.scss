@@ -77,7 +77,7 @@
     padding: 0.7rem;
     background-color: var(--alt-bg-color);
 
-    >button {
+    > button {
       flex: 1.5;
       border-right: 1px solid var(--dark-grey-color);
       position: relative;
@@ -89,7 +89,7 @@
         border-right: none;
       }
 
-      >img {
+      > img {
         vertical-align: middle;
         margin-right: 0.4rem;
         width: 0.9rem;
@@ -105,7 +105,7 @@
     row-gap: 0.7rem;
     margin: 1rem 0;
 
-    >* {
+    > * {
       align-self: center;
     }
 
@@ -152,6 +152,107 @@
       background-color: var(--alt-bg-color);
       border: 1px solid var(--alt-color);
     }
-  }
+    .content {
+      .prize {
+        width: 50px;
+        height: 50px;
+        animation: wobble 3s ease-in;
+        animation-iteration-count: infinite;
 
+        @keyframes wobble {
+          0% {
+            transform: scale(1);
+          }
+          33% {
+            transform: scale(1.2) rotate(0deg);
+          }
+          38% {
+            transform: scale(1.2) rotate(-10deg);
+          }
+          43% {
+            transform: scale(1.2) rotate(10deg);
+          }
+          47% {
+            transform: scale(1.2) rotate(-10deg);
+          }
+          54% {
+            transform: scale(1.2) rotate(10deg);
+          }
+          66% {
+            transform: scale(1.2) rotate(0deg);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+}
+.qr-modal {
+  .header {
+    .title-group {
+      border-bottom: none !important;
+    }
+  }
+  .content {
+    padding-top: 0 !important;
+  }
+  .contact-container {
+    display: flex;
+    justify-content: center;
+    .contact-info {
+      padding-top: 0 !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+
+      .relation {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        color: var(--theme-color);
+      }
+
+      .info-card {
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+        border: 1px solid rgb(229, 231, 235);
+        border-radius: 0.5rem;
+        padding: 1rem 0.7rem;
+
+        .qr-code {
+          border-radius: 0.5rem;
+          margin-bottom: 0.5rem;
+          width: 150px;
+          height: 150px;
+          background-color: var(--alt-bg-color);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: 80%;
+            height: 80%;
+          }
+        }
+        .bank-name,
+        .bank-account {
+          font-size: 0.7rem;
+          opacity: 0.6;
+        }
+      }
+    }
+    .groom-info {
+      .relation {
+        color: var(--blue-color) !important;
+      }
+      .qr-code {
+        background-color: var(--light-blue-color) !important;
+      }
+    }
+  }
 }
