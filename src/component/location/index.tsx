@@ -1,11 +1,12 @@
 import { GMap } from "./map"
 import { LazyDiv } from "../lazyDiv"
-import { BRIDE_INFO, GROOM_INFO, LOCATION } from "../../const"
+import { BRIDE_INFO, GROOM_INFO, LOCATION, WEDDING_HALL_POSITION } from "../../const"
 import prizeImage from "../../images/prize.png"
 import { Button } from "../button"
 import { useModal } from "../modal"
 import groomQR from "../../images/groom-qr.png"
 import brideQR from "../../images/bride-qr.png"
+import weddingCar from "../../images/wedding-car.png"
 import "./index.scss"
 export const Information2 = () => {
   const { openModal, closeModal } = useModal()
@@ -78,13 +79,21 @@ export const Information2 = () => {
     </>
   )
 }
+const openGoogleMaps = () => {
+  // 21.293139, 105.443360
+  const url = `https://maps.google.com?q=${WEDDING_HALL_POSITION.lat},${WEDDING_HALL_POSITION.long}`;
+  window.open(url, '_blank');
+};
 export const Location = () => {
   return (
     <>
       <LazyDiv className="card location information">
         <h2 className="english">Location</h2>
         <div className="addr">{LOCATION}</div>
-        <GMap />
+        <div className="wedding-car-container">
+          <img className="wedding-car" src={weddingCar} alt="wedding car" width={60} />
+        </div>
+        <Button onClick={openGoogleMaps}>chỉ đường</Button>
       </LazyDiv>
       <LazyDiv className="card location">
         <Information2 />

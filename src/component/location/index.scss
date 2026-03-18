@@ -8,6 +8,16 @@
     }
   }
 
+  .wedding-car-container {
+    width: 300px;
+    overflow: hidden;
+  }
+
+  .wedding-car {
+    animation: movingWobble 12s linear;
+    animation-iteration-count: infinite;
+  }
+
   .map-wrapper {
     height: 20rem;
     position: relative;
@@ -77,7 +87,7 @@
     padding: 0.7rem;
     background-color: var(--alt-bg-color);
 
-    > button {
+    >button {
       flex: 1.5;
       border-right: 1px solid var(--dark-grey-color);
       position: relative;
@@ -89,7 +99,7 @@
         border-right: none;
       }
 
-      > img {
+      >img {
         vertical-align: middle;
         margin-right: 0.4rem;
         width: 0.9rem;
@@ -105,7 +115,7 @@
     row-gap: 0.7rem;
     margin: 1rem 0;
 
-    > * {
+    >* {
       align-self: center;
     }
 
@@ -152,6 +162,7 @@
       background-color: var(--alt-bg-color);
       border: 1px solid var(--alt-color);
     }
+
     .content {
       .prize {
         width: 50px;
@@ -159,48 +170,27 @@
         animation: wobble 3s ease-in;
         animation-iteration-count: infinite;
 
-        @keyframes wobble {
-          0% {
-            transform: scale(1);
-          }
-          33% {
-            transform: scale(1.2) rotate(0deg);
-          }
-          38% {
-            transform: scale(1.2) rotate(-10deg);
-          }
-          43% {
-            transform: scale(1.2) rotate(10deg);
-          }
-          47% {
-            transform: scale(1.2) rotate(-10deg);
-          }
-          54% {
-            transform: scale(1.2) rotate(10deg);
-          }
-          66% {
-            transform: scale(1.2) rotate(0deg);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
+
       }
     }
   }
 }
+
 .qr-modal {
   .header {
     .title-group {
       border-bottom: none !important;
     }
   }
+
   .content {
     padding-top: 0 !important;
   }
+
   .contact-container {
     display: flex;
     justify-content: center;
+
     .contact-info {
       padding-top: 0 !important;
       display: flex;
@@ -239,6 +229,7 @@
             height: 80%;
           }
         }
+
         .bank-name,
         .bank-account {
           font-size: 0.7rem;
@@ -246,13 +237,95 @@
         }
       }
     }
+
     .groom-info {
       .relation {
         color: var(--blue-color) !important;
       }
+
       .qr-code {
         background-color: var(--light-blue-color) !important;
       }
     }
+  }
+}
+
+@keyframes wobble {
+  0% {
+    transform: scale(1);
+  }
+
+  33% {
+    transform: scale(1.2) rotate(0deg);
+  }
+
+  38% {
+    transform: scale(1.2) rotate(-10deg);
+  }
+
+  43% {
+    transform: scale(1.2) rotate(10deg);
+  }
+
+  47% {
+    transform: scale(1.2) rotate(-10deg);
+  }
+
+  54% {
+    transform: scale(1.2) rotate(10deg);
+  }
+
+  66% {
+    transform: scale(1.2) rotate(0deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes movingWobble {
+  0% {
+    transform: translateX(-300%) rotate(0deg);
+  }
+
+  10% {
+    transform: translateX(-240%) rotate(-10deg);
+  }
+
+  20% {
+    transform: translateX(-180%) rotate(0deg);
+  }
+
+  30% {
+    transform: translateX(-120%) rotate(10deg);
+  }
+
+  40% {
+    transform: translateX(-60%) rotate(0deg);
+  }
+
+  50% {
+    transform: translateX(0) rotate(-10deg);
+  }
+
+  60% {
+    transform: translateX(60%) rotate(0deg);
+  }
+
+  70% {
+    transform: translateX(120%) rotate(10deg);
+  }
+
+  80% {
+    transform: translateX(180%) rotate(0deg);
+  }
+
+  90% {
+    transform: translateX(240%) rotate(-10deg);
+  }
+
+  100% {
+    transform: translateX(300%) rotate(0deg);
   }
 }

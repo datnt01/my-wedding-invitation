@@ -10,7 +10,7 @@ dayjs.locale("vi")
 export { dayjs }
 
 export const WEDDING_DATE = dayjs.tz("2026-03-28 15:00", "Asia/Ho_Chi_Minh")
-export const WEDDING_DATE_FORMAT = `YYYY MMMM D dddd HH:mm`
+export const WEDDING_DATE_FORMAT = `ngày DD MMMM YYYY dddd HH:mm`
 
 // ngày được đánh dấu trên lịch.
 export const HOLIDAYS = [28]
@@ -22,7 +22,7 @@ export const SHARE_ADDRESS = LOCATION
 export const SHARE_ADDRESS_TITLE = LOCATION
 
 
-export const WEDDING_HALL_POSITION = [126.9594982, 37.4657134]
+export const WEDDING_HALL_POSITION = { lat: 21.2931472, long: 105.4433575 }
 
 
 // 예: https://map.naver.com/p/entry/place/13321741 -> 13321741
@@ -40,7 +40,7 @@ export const BRIDE_INFO = [
     name: BRIDE_FULLNAME,
     phone: "0949835540",
     bankAccount: "0949835540",
-    bankName:"Techcombank",
+    bankName: "Techcombank",
   },
 
 ]
@@ -53,7 +53,7 @@ export const GROOM_INFO = [
     name: GROOM_FULLNAME,
     phone: "0966134375",
     bankAccount: "00126297001",
-    bankName:"Tpbank",
+    bankName: "Tpbank",
 
   },
 
