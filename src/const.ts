@@ -23,6 +23,7 @@ export const SHARE_ADDRESS_TITLE = LOCATION
 
 
 export const WEDDING_HALL_POSITION = { lat: 21.2931472, long: 105.4433575 }
+export const WEDDING_ID = "dat"
 
 
 // 예: https://map.naver.com/p/entry/place/13321741 -> 13321741

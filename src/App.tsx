@@ -10,6 +10,7 @@ import { GuestBook } from "./component/guestbook"
 import { LazyDiv } from "./component/lazyDiv"
 import { ShareButton } from "./component/shareButton"
 import { STATIC_ONLY } from "./env"
+import { Bounce, ToastContainer } from "react-toastify"
 
 function App() {
   return (
@@ -46,6 +47,19 @@ function App() {
 
         <ShareButton />
       </div>
+      <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
+        />
     </div>
   )
 }
