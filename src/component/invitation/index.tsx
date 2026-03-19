@@ -10,8 +10,8 @@ import { Button } from "../button"
 import { LazyDiv } from "../lazyDiv"
 import PhoneIcon from "../../icons/phone-flip-icon.svg?react"
 import EnvelopeIcon from "../../icons/envelope-icon.svg?react"
-import groomImage from "../../images/groom.png"
-import brideImage from "../../images/bride.png"
+import groomImage from "../../images/groom.jpg"
+import brideImage from "../../images/bride.jpg"
 import HeartIcon from "../../icons/heart-icon-color.svg?react"
 export const Invitation = () => {
   const { openModal, closeModal } = useModal()
