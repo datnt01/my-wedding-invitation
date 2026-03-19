@@ -135,30 +135,34 @@ const AttendanceModalContent = () => {
       <div className="input-group">
         <div className="label">Xác nhận tham dự</div>
         <div className="radio-input">
-          <label>
-            <input
-              disabled={loading}
-              type="radio"
-              name="meal"
-              value="yes"
-              ref={(ref) => {
-                inputRef.current.meal.yes = ref as HTMLInputElement
-              }}
-            />
-          </label>
+          <div>
+            <label>
+              <input
+                disabled={loading}
+                type="radio"
+                name="meal"
+                value="yes"
+                ref={(ref) => {
+                  inputRef.current.meal.yes = ref as HTMLInputElement
+                }}
+              />
+            </label>
             <span>Có, tôi sẽ tham dự</span>
-          <label>
-            <input
-              disabled={loading}
-              type="radio"
-              name="meal"
-              value="no"
-              ref={(ref) => {
-                inputRef.current.meal.no = ref as HTMLInputElement
-              }}
-            />
-          </label>
-            <span>Tôi bận, rất tiếc không thể tham dự</span>
+          </div>
+          <div>
+            <label>
+              <input
+                disabled={loading}
+                type="radio"
+                name="meal"
+                value="no"
+                ref={(ref) => {
+                  inputRef.current.meal.no = ref as HTMLInputElement
+                }}
+              />
+            </label>
+            <span>Tôi bận</span>
+          </div>
         </div>
       </div>
     </form>
