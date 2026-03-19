@@ -5,7 +5,7 @@ import prizeImage from "../../images/prize.png"
 import { Button } from "../button"
 import { useModal } from "../modal"
 import groomQR from "../../images/groom-qr.png"
-import brideQR from "../../images/bride-qr.png"
+import brideQR from "../../images/bride-qr.jpg"
 import weddingCar from "../../images/wedding-car.png"
 import "./index.scss"
 export const Information2 = () => {

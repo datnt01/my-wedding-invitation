@@ -41,7 +41,7 @@ export const BRIDE_INFO = [
     name: BRIDE_FULLNAME,
     phone: "0949835540",
     bankAccount: "0949835540",
-    bankName: "Techcombank",
+    bankName: "MBbank",
   },
 
 ]
