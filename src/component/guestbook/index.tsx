@@ -14,14 +14,10 @@ import {
 
 const RULES = {
   name: {
-    maxLength: 10,
+    maxLength: 40,
   },
   content: {
-    maxLength: 100,
-  },
-  password: {
-    minLength: 4,
-    maxLength: 20,
+    maxLength: 300,
   },
 }
 
@@ -279,7 +275,7 @@ const AllGuestBookModal = () => {
         {nextPosts_loading ? (
           <p>Loading..</p>
         ) : lastKey.length > 0 ? (
-          <button onClick={() => fetchMorePosts(lastKey)}>More Posts</button>
+          <Button onClick={() => fetchMorePosts(lastKey)}>More Posts</Button>
         ) : (
           <span>You are up to date!</span>
         )}

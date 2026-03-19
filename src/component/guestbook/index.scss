@@ -7,7 +7,7 @@
     border-radius: 0.5rem;
     border: 1px solid var(--light-grey-color);
     font-size: 0.9rem;
-    margin-top: 0.2rem;
+    margin-top: 0.5rem;
 
     .heading {
       margin: 0.5rem;
@@ -42,17 +42,19 @@
     }
 
     .body {
-      margin: 0 1.3rem 1.3rem 1.3rem;
+      margin: 1rem;
       .title {
         display: flex;
         align-items: baseline;
         .name {
+          color: var(--theme-color);
           margin-right: 0.5rem;
           text-transform: capitalize;
         }
         .date {
           font-size: 0.8rem;
           opacity: 0.5;
+          
         }
         margin-bottom: 0.8rem;
       }
@@ -96,7 +98,7 @@
         margin-bottom: 0.5rem;
         border: 1px solid var(--light-grey-color);
         border-radius: 0.3rem;
-        font-family: "MapoGoldenPier";
+        font-family: "Lora-Regular";
         font-size: 0.8rem;
       }
 
@@ -105,7 +107,7 @@
         margin-bottom: 0.5rem;
         border: 1px solid var(--light-grey-color);
         border-radius: 0.3rem;
-        font-family: "MapoGoldenPier";
+        font-family: "Lora-Regular";
         font-size: 0.8rem;
       }
     }
@@ -183,7 +185,7 @@
         margin-bottom: 0.5rem;
         border: 1px solid var(--light-grey-color);
         border-radius: 0.3rem;
-        font-family: "MapoGoldenPier";
+        font-family: "Lora-Regular";
         font-size: 0.8rem;
       }
     }
