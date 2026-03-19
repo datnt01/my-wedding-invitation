@@ -45,9 +45,10 @@
       margin: 0 1.3rem 1.3rem 1.3rem;
       .title {
         display: flex;
-        align-items: center;
+        align-items: baseline;
         .name {
           margin-right: 0.5rem;
+          text-transform: capitalize;
         }
         .date {
           font-size: 0.8rem;

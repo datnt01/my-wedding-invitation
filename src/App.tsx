@@ -8,7 +8,6 @@ import { Gallery } from "./component/gallery"
 import { Information } from "./component/information"
 import { GuestBook } from "./component/guestbook"
 import { LazyDiv } from "./component/lazyDiv"
-import { ShareButton } from "./component/shareButton"
 import { STATIC_ONLY } from "./env"
 import { Bounce, ToastContainer } from "react-toastify"
 
@@ -44,8 +43,6 @@ function App() {
           {/* 방명록 */}
           {!STATIC_ONLY && <GuestBook />}
         </LazyDiv>
-
-        <ShareButton />
       </div>
       <ToastContainer
           position="top-right"

@@ -6,19 +6,19 @@ import db from "./firestore";
 export function toaster(message, options = {}) {
     toast(message, {
         autoClose: 3000,
-        hideProgressBar: false,
+        hideProgressBar: true,
         closeOnClick: false,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "dark",
+        theme: "light",
         ...options
     });
 }
 
 
 
-const limtit = 4;
+const limitPost = 4;
     /**
      * this function will be fired when the app is first time run,
      * and it will fetch first 5 posts, here i retrieve them in desc order,
@@ -29,7 +29,7 @@ const limtit = 4;
             const q = query(
                 collection(db, collectionStr),
                 orderBy("createdAt", "desc"),
-                limit(limtit))
+                limit(limitPost))
 
             let posts = [];
             let lastKey = "";
@@ -40,7 +40,7 @@ const limtit = 4;
                     postId: doc.id,
                     name: doc.data().name,
                     content: doc.data().content,
-                    creatAt: doc.data().creatAt,
+                    createdAt: doc.data().createdAt,
                 });
                 lastKey = doc.data().createdAt;
             });
@@ -62,7 +62,7 @@ const limtit = 4;
                 collection(db, collectionStr),
                 orderBy("createdAt", "desc"),
                 startAfter(key),
-                limit(limtit)
+                limit(limitPost)
             )
             const data = await getDocs(q);
             let posts = [];
@@ -72,7 +72,7 @@ const limtit = 4;
                     postId: doc.id,
                     name: doc.data().name,
                     content: doc.data().content,
-                    creatAt: doc.data().creatAt,
+                    createdAt: doc.data().createdAt,
                 });
                 lastKey = doc.data().createdAt;
             });

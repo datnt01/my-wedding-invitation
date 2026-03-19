@@ -13,7 +13,7 @@ export const WEDDING_DATE = dayjs.tz("2026-03-28 15:00", "Asia/Ho_Chi_Minh")
 export const WEDDING_DATE_FORMAT = `ngày DD MMMM YYYY dddd HH:mm`
 
 // ngày được đánh dấu trên lịch.
-export const HOLIDAYS = [28]
+export const HOLIDAYS = [29]
 
 export const LOCATION = "số 4 tổ 2b Phong Châu, Thanh Miếu, Phú Thọ"
 export const LOCATION_ADDRESS = "số 4 tổ 2b Phong Châu, Thanh Miếu, Phú Thọ"

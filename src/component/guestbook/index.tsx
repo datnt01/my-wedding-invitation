@@ -1,13 +1,16 @@
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "../button"
-import { dayjs, WEDDING_ID } from "../../const"
+import { WEDDING_ID } from "../../const"
 import { LazyDiv } from "../lazyDiv"
 import { useModal } from "../modal"
-import offlineGuestBook from "./offlineGuestBook.json"
 import { SERVER_URL } from "../../env"
 import { addDoc, collection } from "firebase/firestore"
 import db from "../../utils/firestore"
-import { invitationFirstBatch, invitationNextBatch, toaster } from "../../utils/utils"
+import {
+  invitationFirstBatch,
+  invitationNextBatch,
+  toaster,
+} from "../../utils/utils"
 
 const RULES = {
   name: {
@@ -22,50 +25,27 @@ const RULES = {
   },
 }
 
-const PAGES_PER_BLOCK = 5
-const POSTS_PER_PAGE = 5
-
 type Post = {
-  creatAt: string
+  createdAt: string
   name: string
   content: string
 }
 
 export const GuestBook = () => {
   const { openModal, closeModal } = useModal()
+  const [posts, setPosts] = useState<Post[]>([])
 
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [lastKey, setLastKey] = useState("");
-  const [nextPosts_loading, setNexPostsLoading] = useState(false);
-  const fetchMorePosts = (key: string) => {
-    if (key.length > 0) {
-      setNexPostsLoading(true);
-      invitationNextBatch(WEDDING_ID, key)
-        .then((res) => {
-          if (res) {
-            setLastKey(res.lastKey);
-            setPosts(posts.concat(res.posts));
-            setNexPostsLoading(false);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          setNexPostsLoading(false);
-        });
-    }
-  };
   useEffect(() => {
     invitationFirstBatch(WEDDING_ID)
       .then((res) => {
         if (res) {
-          setPosts(res?.posts || []);
-          setLastKey(res?.lastKey);
+          setPosts(res?.posts || [])
         }
       })
       .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+        console.log(err)
+      })
+  }, [])
   return (
     <LazyDiv className="card guestbook">
       <h2 className="english">Guest Book</h2>
@@ -73,14 +53,13 @@ export const GuestBook = () => {
       <div className="break" />
 
       {posts.map((post) => (
-        <div key={post.creatAt} className="post">
-          <div className="heading">
-          </div>
+        <div key={post.createdAt} className="post">
+          <div className="heading"></div>
           <div className="body">
             <div className="title">
               <div className="name">{post.name}</div>
               <div className="date">
-                {new Date(post.creatAt).toLocaleDateString("vi-VN", {
+                {new Date(post.createdAt).toLocaleDateString("vi-VN", {
                   year: "numeric",
                   month: "2-digit",
                   day: "2-digit",
@@ -200,11 +179,13 @@ const WriteGuestBookModal = () => {
             return
           }
           const createdAt = new Date().toISOString()
-          const docRef = await addDoc(collection(db, WEDDING_ID), {
-            name, content, createdAt
+          await addDoc(collection(db, WEDDING_ID), {
+            name,
+            content,
+            createdAt,
           })
 
-          toaster('cảm ơn bạn đã dành thời gian đăng ký');
+          toaster("cảm ơn bạn đã dành thời gian đăng ký")
           closeModal()
         } catch {
           alert("Không gửi được, vui lòng thử lại.")
@@ -239,48 +220,48 @@ const WriteGuestBookModal = () => {
 }
 
 const AllGuestBookModal = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [lastKey, setLastKey] = useState("");
-  const [nextPosts_loading, setNexPostsLoading] = useState(false);
+  const [posts, setPosts] = useState<Post[]>([])
+  const [lastKey, setLastKey] = useState("")
+  const [nextPosts_loading, setNexPostsLoading] = useState(false)
   const fetchMorePosts = (key: string) => {
     if (key.length > 0) {
-      setNexPostsLoading(true);
+      setNexPostsLoading(true)
       invitationNextBatch(WEDDING_ID, key)
         .then((res) => {
           if (res) {
-            setLastKey(res.lastKey);
-            setPosts(posts.concat(res.posts));
-            setNexPostsLoading(false);
+            setLastKey(res.lastKey)
+            setPosts(posts.concat(res.posts))
+            setNexPostsLoading(false)
           }
         })
         .catch((err) => {
-          console.log(err);
-          setNexPostsLoading(false);
-        });
+          console.log(err)
+          setNexPostsLoading(false)
+        })
     }
-  };
+  }
   useEffect(() => {
     invitationFirstBatch(WEDDING_ID)
       .then((res) => {
         if (res) {
-          setPosts(res?.posts || []);
-          setLastKey(res?.lastKey);
+          setPosts(res?.posts || [])
+          setLastKey(res?.lastKey)
         }
       })
       .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+        console.log(err)
+      })
+  }, [])
 
   return (
     <>
       {posts.map((post) => (
-        <div key={post.creatAt} className="post">
+        <div key={post.createdAt} className="post">
           <div className="body">
             <div className="title">
               <div className="name">{post.name}</div>
               <div className="date">
-                {new Date(post.creatAt).toLocaleDateString("vi-VN", {
+                {new Date(post.createdAt).toLocaleDateString("vi-VN", {
                   year: "numeric",
                   month: "2-digit",
                   day: "2-digit",
@@ -306,4 +287,3 @@ const AllGuestBookModal = () => {
     </>
   )
 }
-

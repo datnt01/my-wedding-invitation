@@ -1,8 +1,11 @@
-import { dayjs, WEDDING_DATE } from "../../const"
+import { dayjs, WEDDING_DATE, WEDDING_ID } from "../../const"
 import { Button } from "../button"
 import { useModal } from "../modal"
 import { useRef, useState } from "react"
 import { SERVER_URL } from "../../env"
+import { addDoc, collection } from "firebase/firestore"
+import db from "../../utils/firestore"
+import { toaster } from "../../utils/utils"
 
 const RULES = {
   name: {
@@ -65,103 +68,55 @@ const AttendanceModalContent = () => {
         e.preventDefault()
         setLoading(true)
         try {
-          const side = inputRef.current.side.groom.checked
-            ? "groom"
-            : inputRef.current.side.bride
-              ? "bride"
-              : null
           const name = inputRef.current.name.value
           const meal = inputRef.current.meal.yes.checked
             ? "yes"
             : inputRef.current.meal.no.checked
               ? "no"
               : null
-          const count = Number(inputRef.current.count.value)
-
-          if (!side) {
-            alert("Vui lòng chọn bên phía cô dâu hoặc chú rể.")
-            return
-          }
 
           if (!name) {
-            alert("Vui lòng nhập tên của bạn.")
+            toaster("Vui lòng nhập tên của bạn.", { type: "error" })
             return
           }
           if (name.length > RULES.name.maxLength) {
-            alert(`tên của bạn phải ngắn hơn ${RULES.name.maxLength} ký tự.`)
-            return
-          }
-
-          if (!meal) {
-            alert("Vui lòng xác nhận tham dự.")
-            return
-          }
-
-          if (isNaN(count)) {
-            alert("Số lượng người tham dự phải là một số.")
-            return
-          }
-          if (count < RULES.count.min) {
-            alert(
-              `Số lượng người tham dự phải từ ${RULES.count.min} người trở lên.`,
+            toaster(
+              `tên của bạn phải ngắn hơn ${RULES.name.maxLength} ký tự.`,
+              { type: "error" },
             )
             return
           }
 
-          const res = await fetch(`${SERVER_URL}/attendance`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ side, name, meal, count }),
-          })
-          if (!res.ok) {
-            throw new Error(res.statusText)
+          if (!meal) {
+            toaster("Vui lòng xác nhận tham dự.", { type: "error" })
+            return
           }
+          let id = localStorage.getItem("browser_id")
+          if (id) {
+            toaster("Bạn đã xác nhận tham dự rồi, cảm ơn bạn rất nhiều!", {
+              type: "success",
+            })
+          }
+          if (!id) {
+            id = crypto.randomUUID()
+            localStorage.setItem("browser_id", id)
+            const createdAt = new Date().toISOString()
+            await addDoc(collection(db, WEDDING_ID + "_attendance"), {
+              name,
+              meal,
+              createdAt,
+            })
 
-          alert("Đã gửi xác nhận tham dự.")
+            toaster("Đã gửi xác nhận tham dự.")
+          }
           closeModal()
         } catch {
-          alert("Gửi không thành công.")
+          toaster("Gửi không thành công.", { type: "error" })
         } finally {
           setLoading(false)
         }
       }}
     >
-      <div className="input-group">
-        <div className="label">Bạn tham dự bên phía cô dâu hay chú rể ?</div>
-        <div className="select-input">
-          <label>
-            <input
-              disabled={loading}
-              type="radio"
-              name="side"
-              value="groom"
-              hidden
-              defaultChecked
-              ref={(ref) => {
-                inputRef.current.side.groom = ref as HTMLInputElement
-              }}
-            />
-            <span>Chú rể</span>
-          </label>
-
-          <label>
-            <input
-              disabled={loading}
-              type="radio"
-              name="side"
-              value="bride"
-              hidden
-              ref={(ref) => {
-                inputRef.current.side.bride = ref as HTMLInputElement
-              }}
-            />
-            <span>Cô dâu</span>
-          </label>
-        </div>
-      </div>
-
       <div className="input-group">
         <div className="label">Tên</div>
         <div className="input">
@@ -190,8 +145,8 @@ const AttendanceModalContent = () => {
                 inputRef.current.meal.yes = ref as HTMLInputElement
               }}
             />
-            <span>Có, tôi sẽ tham dự</span>
           </label>
+            <span>Có, tôi sẽ tham dự</span>
           <label>
             <input
               disabled={loading}
@@ -202,8 +157,8 @@ const AttendanceModalContent = () => {
                 inputRef.current.meal.no = ref as HTMLInputElement
               }}
             />
-            <span>Tôi bận, rất tiếc không thể tham dự</span>
           </label>
+            <span>Tôi bận, rất tiếc không thể tham dự</span>
         </div>
       </div>
     </form>
