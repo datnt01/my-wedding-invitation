@@ -1,7 +1,6 @@
 import coverImage from "./cover.jpg"
 import image1 from "./TAP_1.jpg"
 import image2 from "./TAP_2.jpg"
-import image4 from "./TAP_4.jpg"
 import image5 from "./TAP_5.jpg"
 import image6 from "./TAP_6.jpg"
 import image8 from "./TAP_8.jpg"
@@ -18,7 +17,6 @@ export const COVER_IMAGE = coverImage
 export const GALLERY_IMAGES = [
   image1,
   image2,
-  image4,
   image5,
   image6,
   image8,
