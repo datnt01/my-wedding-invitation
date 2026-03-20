@@ -17,7 +17,7 @@ const RULES = {
     maxLength: 40,
   },
   content: {
-    maxLength: 300,
+    maxLength: 3000,
   },
 }
 
