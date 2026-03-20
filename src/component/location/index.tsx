@@ -1,6 +1,11 @@
-import { GMap } from "./map"
 import { LazyDiv } from "../lazyDiv"
-import { BRIDE_INFO, GROOM_INFO, LOCATION, WEDDING_HALL_POSITION } from "../../const"
+import {
+  BRIDE_INFO,
+  GROOM_INFO,
+  LOCATION,
+  WEDDING_GG_MAP_URL,
+} from "../../const"
+import { CopyToClipboard } from "react-copy-to-clipboard"
 import prizeImage from "../../images/prize.png"
 import { Button } from "../button"
 import { useModal } from "../modal"
@@ -8,8 +13,18 @@ import groomQR from "../../images/groom-qr.png"
 import brideQR from "../../images/bride-qr.jpg"
 import weddingCar from "../../images/wedding-car.png"
 import "./index.scss"
+import { toaster } from "../../utils/utils"
 export const Information2 = () => {
   const { openModal, closeModal } = useModal()
+
+  const onCopyText = () => {
+    toaster("Đã sao chép số tài khoản của cô dâu!")
+  }
+
+  const onCopyGroomText = () => {
+    toaster("Đã sao chép số tài khoản của chú rể!")
+  }
+
   return (
     <>
       <div className="info-card">
@@ -38,11 +53,24 @@ export const Information2 = () => {
                     <div className="info-card">
                       <div className="qr-code">
                         <img src={brideQR} alt="QR code" />
+                        <a href={brideQR} download="bride-qr.jpg">
+                          <span className="material-symbols-outlined">
+                            download
+                          </span>
+                        </a>
                       </div>
                       <div className="name">{BRIDE_INFO[0].name}</div>
                       <div className="bank-name">{BRIDE_INFO[0].bankName}</div>
                       <div className="bank-account">
                         {BRIDE_INFO[0].bankAccount}
+                        <CopyToClipboard
+                          text={BRIDE_INFO[0].bankAccount}
+                          onCopy={onCopyText}
+                        >
+                          <span className="material-symbols-outlined">
+                            content_copy
+                          </span>
+                        </CopyToClipboard>
                       </div>
                     </div>
                   </div>
@@ -51,11 +79,26 @@ export const Information2 = () => {
                     <div className="info-card">
                       <div className="qr-code">
                         <img src={groomQR} alt="QR code" />
+                        <a href={groomQR} download="groom-qr.png">
+                          <span className="material-symbols-outlined">
+                            download
+                          </span>
+                        </a>
                       </div>
                       <div className="name">{GROOM_INFO[0].name}</div>
                       <div className="bank-name">{GROOM_INFO[0].bankName}</div>
                       <div className="bank-account">
                         {GROOM_INFO[0].bankAccount}
+                        <CopyToClipboard
+                          text={GROOM_INFO[0].bankAccount}
+                          onCopy={onCopyGroomText}
+                        >
+                          <button>
+                            <span className="material-symbols-outlined">
+                              content_copy
+                            </span>
+                          </button>
+                        </CopyToClipboard>
                       </div>
                     </div>
                   </div>
@@ -81,9 +124,8 @@ export const Information2 = () => {
 }
 const openGoogleMaps = () => {
   // 21.293139, 105.443360
-  const url = `https://maps.google.com?q=${WEDDING_HALL_POSITION.lat},${WEDDING_HALL_POSITION.long}`;
-  window.open(url, '_blank');
-};
+  window.open(WEDDING_GG_MAP_URL, "_blank")
+}
 export const Location = () => {
   return (
     <>
@@ -91,7 +133,12 @@ export const Location = () => {
         <h2 className="english">Location</h2>
         <div className="addr">{LOCATION}</div>
         <div className="wedding-car-container">
-          <img className="wedding-car" src={weddingCar} alt="wedding car" width={60} />
+          <img
+            className="wedding-car"
+            src={weddingCar}
+            alt="wedding car"
+            width={60}
+          />
         </div>
         <Button onClick={openGoogleMaps}>chỉ đường</Button>
       </LazyDiv>

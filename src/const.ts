@@ -9,21 +9,22 @@ dayjs.locale("vi")
 
 export { dayjs }
 
-export const WEDDING_DATE = dayjs.tz("2026-03-28 15:00", "Asia/Ho_Chi_Minh")
+export const WEDDING_DATE = dayjs.tz("2026-03-28 16:00", "Asia/Ho_Chi_Minh")
 export const WEDDING_DATE_FORMAT = `ngày DD MMMM YYYY dddd HH:mm`
 
 // ngày được đánh dấu trên lịch.
 export const HOLIDAYS = [29]
 
-export const LOCATION = "số 4 tổ 2b Phong Châu, Thanh Miếu, Phú Thọ"
-export const LOCATION_ADDRESS = "số 4 tổ 2b Phong Châu, Thanh Miếu, Phú Thọ"
+export const LOCATION = "8/63 đường Văn Cao, phường Nam Định, tỉnh Ninh Bình"
+export const LOCATION_ADDRESS = "8/63 đường Văn Cao, phường Nam Định, tỉnh Ninh Bình"
 
 export const SHARE_ADDRESS = LOCATION
 export const SHARE_ADDRESS_TITLE = LOCATION
 
 
-export const WEDDING_HALL_POSITION = { lat: 21.2931472, long: 105.4433575 }
-export const WEDDING_ID = "dat"
+export const WEDDING_HALL_POSITION = { lat: 20.418832, long: 106.1675415 }
+export const WEDDING_ID = "giang"
+export const WEDDING_GG_MAP_URL = "https://goo.gl/maps/AMLgQBDT64pSuuWm9"
 
 
 // 예: https://map.naver.com/p/entry/place/13321741 -> 13321741
