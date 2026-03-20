@@ -3,7 +3,6 @@ import { Button } from "../button"
 import { WEDDING_ID } from "../../const"
 import { LazyDiv } from "../lazyDiv"
 import { useModal } from "../modal"
-import { SERVER_URL } from "../../env"
 import { addDoc, collection } from "firebase/firestore"
 import db from "../../utils/firestore"
 import {
@@ -69,48 +68,46 @@ export const GuestBook = () => {
 
       <div className="break" />
 
-      {SERVER_URL && (
-        <>
-          <Button
-            onClick={() =>
-              openModal({
-                className: "write-guestbook-modal",
-                closeOnClickBackground: false,
-                header: (
-                  <div className="title-group">
-                    <div className="title">Hãy viết vào sổ lưu bút</div>
-                    <div className="subtitle">
-                      Chúng tôi rất vui khi nhận được lời chúc từ bạn!
-                    </div>
+      <>
+        <Button
+          onClick={() =>
+            openModal({
+              className: "write-guestbook-modal",
+              closeOnClickBackground: false,
+              header: (
+                <div className="title-group">
+                  <div className="title">Hãy viết vào sổ lưu bút</div>
+                  <div className="subtitle">
+                    Chúng tôi rất vui khi nhận được lời chúc từ bạn!
                   </div>
-                ),
-                content: <WriteGuestBookModal />,
-                footer: (
-                  <>
-                    <Button
-                      buttonStyle="style2"
-                      type="submit"
-                      form="guestbook-write-form"
-                    >
-                      Lưu lại
-                    </Button>
-                    <Button
-                      buttonStyle="style2"
-                      className="bg-light-grey-color text-dark-color"
-                      onClick={closeModal}
-                    >
-                      Huỷ
-                    </Button>
-                  </>
-                ),
-              })
-            }
-          >
-            Viết vào sổ lưu bút
-          </Button>
-          <div className="break" />
-        </>
-      )}
+                </div>
+              ),
+              content: <WriteGuestBookModal />,
+              footer: (
+                <>
+                  <Button
+                    buttonStyle="style2"
+                    type="submit"
+                    form="guestbook-write-form"
+                  >
+                    Lưu lại
+                  </Button>
+                  <Button
+                    buttonStyle="style2"
+                    className="bg-light-grey-color text-dark-color"
+                    onClick={closeModal}
+                  >
+                    Huỷ
+                  </Button>
+                </>
+              ),
+            })
+          }
+        >
+          Viết vào sổ lưu bút
+        </Button>
+        <div className="break" />
+      </>
 
       <Button
         onClick={() =>
@@ -158,20 +155,20 @@ const WriteGuestBookModal = () => {
           const content = inputRef.current.content.value.trim()
 
           if (!name) {
-            alert("vui lòng nhập tên.")
+            toaster("vui lòng nhập tên.", {type: "error"})
             return
           }
           if (name.length > RULES.name.maxLength) {
-            alert(`tên không được quá ${RULES.name.maxLength} ký tự.`)
+            toaster(`tên không được quá ${RULES.name.maxLength} ký tự.`, {type: "error"})
             return
           }
 
           if (!content) {
-            alert("vui lòng nhập nội dung.")
+            toaster("vui lòng nhập nội dung.", {type: "error"})
             return
           }
           if (content.length > RULES.content.maxLength) {
-            alert(`nội dung không được quá ${RULES.content.maxLength} ký tự.`)
+            toaster(`nội dung không được quá ${RULES.content.maxLength} ký tự.`, {type: "error"})
             return
           }
           const createdAt = new Date().toISOString()
@@ -181,10 +178,10 @@ const WriteGuestBookModal = () => {
             createdAt,
           })
 
-          toaster("cảm ơn bạn đã dành thời gian đăng ký")
+          toaster("cảm ơn bạn đã gửi lời yêu thương đến chúng tôi!")
           closeModal()
         } catch {
-          alert("Không gửi được, vui lòng thử lại.")
+          toaster("Không gửi được, vui lòng thử lại.", {type: "error"})
         } finally {
           setLoading(false)
         }
